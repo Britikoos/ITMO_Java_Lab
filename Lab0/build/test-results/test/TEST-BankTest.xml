@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="BankTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-07-09T18:29:46" hostname="BRITIKOS" time="0.05">
+  <properties/>
+  <testcase name="TestSystems()" classname="BankTest" time="0.036"/>
+  <testcase name="TestTimeMachine()" classname="BankTest" time="0.006"/>
+  <testcase name="TestTransaction()" classname="BankTest" time="0.002"/>
+  <system-out><![CDATA[РћСЃС‚Р°С‚РѕРє РЅР° РІР°С€РµРј СЃС‡РµС‚Рµ СЂР°РІРµРЅ
+2142137
+Trasaction complited Sucsses
+Trasaction deleted Sucsses
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
