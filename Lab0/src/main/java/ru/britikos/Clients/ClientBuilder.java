@@ -6,20 +6,24 @@ public class ClientBuilder extends Builder{
     Client owner = new Client();
 
     @Override
-    public void SetFullName(Name fullName){
-        owner.FullName = fullName;
+    public void setId(long id){
+        owner.id = id;
+    }
+    @Override
+    public void setFullName(Name fullName){
+        owner.fullName = fullName;
     }
 
     @Override
-    public void SetPassport(Passport passport){
-        owner.Passport = passport;
+    public void setPassport(Passport passport){
+        owner.passport = passport;
     }
     @Override
-    public void SetBirthDay(Date birth){
-        owner.BirthDay = birth;
+    public void setBirthDay(Date birth){
+        owner.birthDay = birth;
     }
     @Override
-    public Client GetResult(){
+    public Client getResult(){
         return owner;
     }
 }

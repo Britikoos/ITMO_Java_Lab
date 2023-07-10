@@ -20,10 +20,11 @@ import java.util.List;
  * карты, должны получить уведомление.
  */
 public class Bank {
-    public String Name;
+    public String name;
+    public long id;
     public float[] DepositePersents = new float[3];
-    public float CreditPersents;
-    public float DebitPersents;
+    public float creditPersents;
+    public float debitPersents;
     public List<Client> Clients = new ArrayList();
     public List<Account> Accounts = new ArrayList();
 
@@ -31,7 +32,7 @@ public class Bank {
      * Метод, котороый добавляет клиента в банк.
      * @param owner
      */
-    public void AddClient(Client owner) {
+    public void addClient(Client owner) {
         if (!Clients.contains(owner))
             Clients.add(owner);
         else
@@ -47,7 +48,7 @@ public class Bank {
      * @param score
      * @return
      */
-    public Account CreateAccount(Account score) {
+    public Account createAccount(Account score) {
         if (!Accounts.contains(score))
             Accounts.add(score);
         else

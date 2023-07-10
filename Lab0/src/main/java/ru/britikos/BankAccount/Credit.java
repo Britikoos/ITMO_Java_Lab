@@ -3,6 +3,7 @@ package ru.britikos.BankAccount;
 
 
 import ru.britikos.Banks.Bank;
+import ru.britikos.Clients.Client;
 
 import java.util.Date;
 
@@ -13,26 +14,32 @@ import java.util.Date;
 public class Credit extends Account{
     /**
      * Конструктор
-     * @param StartDay
-     * @param EndDay
-     * @param CreditSum
+     * @param startDay
+     * @param endDay
+     * @param creditSum
      * @param bank
      */
-    public Credit(Date StartDay,Date EndDay, int CreditSum, Bank bank){
-        this.Money = CreditSum;
-        this.EndDay = EndDay;
-        this.StartDay = StartDay;
+    public Credit(long id,Date startDay,Date endDay, double creditSum, Bank bank){
+        this.id = id;
+        this.money = creditSum;
+        this.endDay = endDay;
+        this.startDay = startDay;
         this.bank = bank;
-        this.ComissionMoney = bank.CreditPersents;
+        this.comissionMoney = bank.creditPersents;
+        this.type = TypeScore.Credit;
     }
 
     /**
      * Метод, который начисляет проценты на счет
      */
     @Override
-    public void AccrualOfInterest(){
-        if(Money < 0)
-            Money -= Money*(ComissionMoney/356);
+    public void accrualOfInterest(){
+        if(money < 0)
+            money -= money*(comissionMoney/356);
     }
 
+    @Override
+    public void setClient(Client owner){
+        this.owner = owner;
+    }
 }

@@ -3,6 +3,7 @@ package ru.britikos.BankAccount;
 
 
 import ru.britikos.Banks.Bank;
+import ru.britikos.Clients.Client;
 
 import java.util.Date;
 
@@ -16,39 +17,45 @@ public class Deposit extends Account{
 
     /**
      * Конструктор с параметрами
-     * @param ID
-     * @param StartDay
-     * @param EndDay
-     * @param StartSum
+     * @param id
+     * @param startDay
+     * @param endDay
+     * @param startSum
      * @param bank
      */
-    public Deposit(int ID, Date StartDay, Date EndDay, int StartSum, Bank bank){
-        this.ID = ID;
-        this.StartDay = StartDay;
-        this.EndDay = EndDay;
-        this.Money = StartSum;
+    public Deposit(long id, Date startDay, Date endDay,double startSum, Bank bank){
+        this.id = id;
+        this.startDay = startDay;
+        this.endDay = endDay;
+        this.money = startSum;
         this.bank = bank;
-        SetPercent();
+        setPercent();
+        this.type = TypeScore.Deposite;
     }
 
     /**
      * Метод, который определяет процент в зависимости от суммы вклада.
      */
-    public void SetPercent() {
-        if(Money < 50000)
-            ComissionMoney = bank.DepositePersents[0];
-        if (Money > 50000 && Money < 100000)
-            ComissionMoney = bank.DepositePersents[1];
-        if (Money > 100000)
-            ComissionMoney = bank.DepositePersents[2];
+    public void setPercent() {
+        if(money < 50000)
+            comissionMoney = bank.DepositePersents[0];
+        if (money > 50000 && money < 100000)
+            comissionMoney = bank.DepositePersents[1];
+        if (money > 100000)
+            comissionMoney = bank.DepositePersents[2];
     }
 
     /**
      * Метод, который начисляет проценты на счет
      */
     @Override
-    public void AccrualOfInterest(){
-            Money += Money*(ComissionMoney/365);
+    public void accrualOfInterest(){
+            money += money*(comissionMoney/365);
+    }
+
+    @Override
+    public void setClient(Client owner){
+        this.owner = owner;
     }
 
 }

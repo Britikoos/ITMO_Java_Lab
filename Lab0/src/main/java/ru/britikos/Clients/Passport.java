@@ -10,9 +10,9 @@ public class Passport {
      * @param series
      */
     public Passport(int number, int series){
-        Number = number;
-        Series = series;
+        number = number;
+        series = series;
     }
-    public int Number;
-    public int Series;
+    public int number;
+    public int series;
 }

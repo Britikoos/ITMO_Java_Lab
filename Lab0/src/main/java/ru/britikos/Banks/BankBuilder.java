@@ -4,27 +4,28 @@ public class BankBuilder extends Builder {
     Bank bank = new Bank();
 
     @Override
-    public void SetName(String Name) {
-        bank.Name = Name;
+    public void setName(String Name) {
+        bank.name = Name;
+    }
+    @Override
+    public void setId(long id){bank.id = id;}
+    @Override
+    public void setCreditPercents(float Percents) {
+        bank.creditPersents = Percents;
     }
 
     @Override
-    public void SetCreditPercents(float Percents) {
-        bank.CreditPersents = Percents;
+    public void setDebitPercents(float Percents) {
+        bank.debitPersents = Percents;
     }
 
     @Override
-    public void SetDebitPercents(float Percents) {
-        bank.DebitPersents = Percents;
-    }
-
-    @Override
-    public void SetDepositePercents(float[] Percents) {
+    public void setDepositePercents(float[] Percents) {
         bank.DepositePersents = Percents;
     }
 
     @Override
-    public Bank GetResult() {
+    public Bank getResult() {
         return bank;
     }
 }

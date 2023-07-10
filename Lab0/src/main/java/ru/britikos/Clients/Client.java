@@ -7,16 +7,17 @@ import ru.britikos.Transactions.Transaction;
 import java.util.Date;
 
 public class Client {
-    public Name FullName;
-    public Date BirthDay;
-    public Passport Passport;
+    public long id;
+    public Name fullName;
+    public Date birthDay;
+    public Passport passport;
 
     /**
      * Метод добавляет транзакцию.
      * @param transfer
      */
-    public void AddTransaction(Transaction transfer) {
-        transfer.AddTransaction();
+    public void addTransaction(Transaction transfer) {
+        transfer.addTransaction();
         System.out.println("Trasaction complited Sucsses");
     }
 
@@ -24,8 +25,8 @@ public class Client {
      * Метод удаляет транзакцию.
      * @param transfer
      */
-    public void DeleteTransaction(Transaction transfer){
-        transfer.DeleteTransaction();
+    public void deleteTransaction(Transaction transfer){
+        transfer.deleteTransaction();
         System.out.println("Trasaction deleted Sucsses");
     }
 

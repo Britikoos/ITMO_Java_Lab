@@ -5,9 +5,9 @@ package ru.britikos.Clients;
  */
 public class Name {
     public Name(String firstName, String secondName){
-        FirstName = firstName;
-        SecondName = secondName;
+        this.firstName = firstName;
+        this.secondName = secondName;
     }
-    public String FirstName;
-    public String SecondName;
+    public String firstName;
+    public String secondName;
 }

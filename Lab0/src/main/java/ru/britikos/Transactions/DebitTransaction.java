@@ -7,25 +7,25 @@ import ru.britikos.Banks.Bank;
 public class DebitTransaction extends Transaction{
     /**
      * Конструктор
-     * @param ID
-     * @param Money
-     * @param ScoreFrom
-     * @param ScoreTo
+     * @param id
+     * @param money
+     * @param scoreFrom
+     * @param scoreTo
      * @param bank
      */
-    public DebitTransaction(int ID, int Money, Account ScoreFrom, Account ScoreTo, Bank bank) {
-        super(ID, Money, ScoreFrom, ScoreTo, bank);
+    public DebitTransaction(long id, double money, Account scoreFrom, Account scoreTo, Bank bank) {
+        super(id, money, scoreFrom, scoreTo, bank);
     }
 
     /**
      * Метод, проверяющий корректность транзакции.
      */
     @Override
-    public void Check() {
-        if(ScoreFrom.Money >= Money)
-            IsCorrect = true;
+    public void check() {
+        if(scoreFrom.money >= money)
+            isCorrect = true;
         else {
-            IsCorrect = false;
+            isCorrect = false;
             System.out.println("On your score not exists money");
         }
 
@@ -34,18 +34,18 @@ public class DebitTransaction extends Transaction{
      * Метод, добавляющий транзакцию.
      */
     @Override
-    public void AddTransaction() {
-        Check();
-        ScoreFrom.Money -= Money;
-        ScoreTo.Money += Money;
+    public void addTransaction() {
+        check();
+        scoreFrom.money -= money;
+        scoreTo.money += money;
     }
 
     /**
      * Метод, удаляющий транзакцию.
      */
     @Override
-    public void DeleteTransaction() {
-        ScoreTo.Money -= Money;
-        ScoreFrom.Money += Money;
+    public void deleteTransaction() {
+        scoreTo.money -= money;
+        scoreFrom.money += money;
     }
 }

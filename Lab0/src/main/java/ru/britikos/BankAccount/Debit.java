@@ -3,6 +3,7 @@ package ru.britikos.BankAccount;
 
 
 import ru.britikos.Banks.Bank;
+import ru.britikos.Clients.Client;
 
 import java.util.Date;
 
@@ -13,25 +14,31 @@ import java.util.Date;
 public class Debit extends Account{
     /**
      * Конструктор с параметрами
-     * @param ID
-     * @param StartDay
-     * @param EndDay
-     * @param StartSum
+     * @param id
+     * @param startDay
+     * @param endDay
+     * @param startSum
      * @param bank
      */
-    public Debit(int ID, Date StartDay,Date EndDay,  int StartSum, Bank bank){
-        this.Money = StartSum;
-        this.EndDay = EndDay;
-        this.StartDay = StartDay;
+    public Debit(long id, Date startDay,Date endDay,double startSum, Bank bank){
+        this.money = startSum;
+        this.endDay = endDay;
+        this.startDay = startDay;
         this.bank = bank;
-        ComissionMoney = bank.DebitPersents;
+        comissionMoney = bank.debitPersents;
+        this.type = TypeScore.Debit;
     }
     /**
      * Метод, который начисляет проценты на счет
      */
     @Override
-    public void AccrualOfInterest(){
-        if(Money > 0)
-            Money += ComissionMoney;
+    public void accrualOfInterest(){
+        if(money > 0)
+            money += comissionMoney;
+    }
+
+    @Override
+    public void setClient(Client owner){
+        this.owner = owner;
     }
 }

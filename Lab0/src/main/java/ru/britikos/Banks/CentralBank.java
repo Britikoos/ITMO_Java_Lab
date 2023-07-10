@@ -39,6 +39,7 @@ public class CentralBank {
         }
         return instance;
     }
+    public long id =0;
     public List<Client> Clients = new ArrayList();
     public List<Account> Accounts = new ArrayList();
     public List<Bank> Banks = new ArrayList();
@@ -50,12 +51,12 @@ public class CentralBank {
      * @param number
      * @return
      */
-    public Client CreateClient(Name fullName, Date Birth, Passport number){
+    public Client createClient(Name fullName, Date Birth, Passport number){
         ClientBuilder builder = new ClientBuilder();
-        builder.SetBirthDay(Birth);
-        builder.SetFullName(fullName);
-        builder.SetPassport(number);
-        return builder.GetResult();
+        builder.setBirthDay(Birth);
+        builder.setFullName(fullName);
+        builder.setPassport(number);
+        return builder.getResult();
     }
 
     /**
@@ -64,34 +65,35 @@ public class CentralBank {
      * @param bank
      * @return
      */
-    public Client AddClient(Client owner, Bank bank){
-        bank.AddClient(owner);
+    public Client addClient(Client owner, Bank bank){
+        bank.addClient(owner);
         Clients.add(owner);
         return owner;
     }
 
     /**
      * Метод создает банк в банковской системе.
-     * @param Name
+     * @param name
      * @param credit
      * @param debit
      * @param deposit
      * @return
      */
-    public Bank CreateBank(String Name,float credit, float debit, float[] deposit ){
+    public Bank createBank(String name,float credit, float debit, float[] deposit ){
         BankBuilder builder = new BankBuilder();
-        builder.SetName(Name);
-        builder.SetCreditPercents(credit);
-        builder.SetDebitPercents(debit);
-        builder.SetDepositePercents(deposit);
-        return builder.GetResult();
+        builder.setName(name);
+        builder.setId(++id);
+        builder.setCreditPercents(credit);
+        builder.setDebitPercents(debit);
+        builder.setDepositePercents(deposit);
+        return builder.getResult();
     }
 
     /**
      * Метод добавляет банк в банковскую систему.
      * @param bank
      */
-    public void AddBank(Bank bank) {
+    public void addBank(Bank bank) {
         if (!Banks.contains(bank))
             Banks.add(bank);
         else {
@@ -106,18 +108,46 @@ public class CentralBank {
     /**
      * Метод доавляет аккаунт в банковскую систему.
      * @param account
-     * @param bank
      */
-    public void AddAccount(Account account, Bank bank){
-        bank.CreateAccount(account);
+    public Account addAccount(Account account, Client owner){
+        account.bank.createAccount(account);
         Accounts.add(account);
+        account.setClient(owner);
+        return account;
     }
 
+    public Bank findBank(long id){
+        for(int i =0 ; i < Banks.size(); i++){
+            if(Banks.get(i).id == id)
+                return Banks.get(i);
+        }
+        return Banks.get(0);
+    }
+
+    public Account findAccount(long id){
+        for(int i =0 ; i < Accounts.size(); i++){
+            if(Accounts.get(i).id == id)
+                return Accounts.get(i);
+        }
+        return Accounts.get(0);
+    }
+
+    public Client findClient(long id){
+        for(int i =0 ; i < Clients.size(); i++){
+            if(Clients.get(i).id == id)
+                return Clients.get(i);
+        }
+        return Clients.get(0);
+    }
+
+    public long getId(){
+        return id++;
+    }
     /**
      * Метод списывает проценты.
      */
-    public void AccrualOfInterest(){
+    public void accrualOfInterest(){
         for( int i = 0; i < Accounts.size(); i++)
-            Accounts.get(i).AccrualOfInterest();
+            Accounts.get(i).accrualOfInterest();
     }
 }

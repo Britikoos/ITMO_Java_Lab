@@ -8,30 +8,29 @@ import java.util.concurrent.TimeUnit;
 public class PersonalTimeMachine {
     /**
      * Конструктор
-     * @param Money
-     * @param StartDay
-     * @param ComissionMoney
+     * @param money
+     * @param startDay
+     * @param comissionMoney
      */
-    public PersonalTimeMachine(int Money, Date StartDay, float ComissionMoney){
-        FutureMoney = Money;
-        this.StartDay = StartDay;
-        this.ComissionMoney = ComissionMoney;
+    public PersonalTimeMachine(double money, Date startDay, float comissionMoney){
+        futureMoney = money;
+        this.startDay = startDay;
+        this.comissionMoney = comissionMoney;
     }
-    public float FutureMoney;
-    public Date StartDay;
-
-    public float ComissionMoney;
+    public double futureMoney;
+    public Date startDay;
+    public float comissionMoney;
 
     /**
      * Метод, показывающий состояние счета в определенную дата.
      * @param EndDate
      * @return
      */
-    public float StartMachine(Date EndDate){
-        long NumDay = TimeUnit.DAYS.convert(Math.abs(StartDay.getTime() - EndDate.getTime()), TimeUnit.MILLISECONDS);
-        FutureMoney = (FutureMoney * (ComissionMoney/365) * NumDay);
+    public double startMachine(Date EndDate){
+        long NumDay = TimeUnit.DAYS.convert(Math.abs(startDay.getTime() - EndDate.getTime()), TimeUnit.MILLISECONDS);
+        futureMoney = (futureMoney * (comissionMoney/365) * NumDay);
         System.out.println("Остаток на вашем счете равен");
-        System.out.println((int)FutureMoney);
-        return FutureMoney;
+        System.out.println((int)futureMoney);
+        return futureMoney;
     }
 }
