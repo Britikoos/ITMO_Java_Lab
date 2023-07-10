@@ -1,6 +1,6 @@
 package ru.britikos.Handlers;
 
-public class DepositeHandler extends Handler{
+public classDepositeHandler extends Handler{
     @Override
     public void Handle(Receiver receiver)
     {
