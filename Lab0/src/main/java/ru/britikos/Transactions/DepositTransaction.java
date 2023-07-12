@@ -10,23 +10,23 @@ import java.util.Date;
 public class DepositTransaction extends Transaction{
     /**
      * Конструктор
-     * @param ID
-     * @param Money
-     * @param ScoreFrom
-     * @param ScoreTo
+     * @param id
+     * @param money
+     * @param scoreFrom
+     * @param scoreTo
      * @param bank
      */
-    public DepositTransaction(int ID, int Money, Account ScoreFrom, Account ScoreTo, Bank bank) {
-        super(ID, Money, ScoreFrom, ScoreTo, bank);
+    public DepositTransaction(long id, double money, Account scoreFrom, Account scoreTo, Bank bank) {
+        super(id, money, scoreFrom, scoreTo, bank);
     }
 
     public Date data = new Date();
     @Override
-    public void Check() {
-        if(ScoreFrom.EndDay.before(data))
-            IsCorrect = true;
+    public void check() {
+        if(scoreFrom.endDay.before(data))
+            isCorrect = true;
         else {
-            IsCorrect = false;
+            isCorrect = false;
             System.out.println("Time your score not ready yet");
         }
 
@@ -36,10 +36,10 @@ public class DepositTransaction extends Transaction{
      * Метод, добавляющий транзакцию.
      */
     @Override
-    public void AddTransaction() {
-        Check();
-        ScoreFrom.Money -= Money;
-        ScoreTo.Money += Money;
+    public void addTransaction() {
+        check();
+        scoreFrom.money -= money;
+        scoreTo.money += money;
         System.out.println();
     }
 
@@ -47,9 +47,9 @@ public class DepositTransaction extends Transaction{
      * Метод, удаляющий транзакцию.
      */
     @Override
-    public void DeleteTransaction() {
-        Check();
-        ScoreTo.Money -= Money;
-        ScoreFrom.Money += Money;
+    public void deleteTransaction() {
+        check();
+        scoreTo.money -= money;
+        scoreFrom.money += money;
     }
 }

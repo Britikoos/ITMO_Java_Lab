@@ -19,41 +19,38 @@ import ru.britikos.Banks.Bank;
 public abstract class Transaction {
     /**
      * Конструктор создающий транзакции
-     * @param ID
-     * @param Money
-     * @param ScoreFrom
-     * @param ScoreTo
+     * @param id
+     * @param money
+     * @param scoreFrom
+     * @param scoreTo
      * @param bank
      */
-    public Transaction(int ID, int Money, Account ScoreFrom, Account ScoreTo, Bank bank ){
-        this.Money = Money;
-        this.Number = ID;
-        this.ScoreFrom = ScoreFrom;
-        this.ScoreTo = ScoreTo;
+    public Transaction(long id, double money, Account scoreFrom, Account scoreTo, Bank bank ){
+        this.money = money;
+        this.number = id;
+        this.scoreFrom = scoreFrom;
+        this.scoreTo = scoreTo;
         this.bank = bank;
     }
-    public int Number;
-    public int Money;
-
-    public Account ScoreFrom;
-
-    public Account ScoreTo;
-
+    public long number;
+    public double money;
+    public Account scoreFrom;
+    public Account scoreTo;
     public Bank bank;
-    public boolean IsCorrect = false;
+    public boolean isCorrect = false;
 
     /**
      * Метод, проверяющий корректность транзакции.
      */
-    public abstract void Check();
+    public abstract void check();
 
     /**
      * Метод, добавляющий транзакцию.
      */
-    public abstract void AddTransaction();
+    public abstract void addTransaction();
 
     /**
      * Метод, удаляющий транзакцию.
      */
-    public abstract void DeleteTransaction();
+    public abstract void deleteTransaction();
 }
